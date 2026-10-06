@@ -212,7 +212,24 @@ const $=id=>document.getElementById(id);
 function fechaActual(){return new Date().toISOString().slice(0,10)}
 function dinero(n){return new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN"}).format(Number(n)||0)}
 function leer(k,d={}){try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(d))}catch(e){return d}}
-function guardar(k,d){localStorage.setItem(k,JSON.stringify(d))}
+function guardar(k,d){
+  localStorage.setItem(k,JSON.stringify(d));
+  guardarNube(k,d);
+}
+ async function guardarNube(k,d){
+  const { error } = await supabaseClient
+    .from("polleria_lulu_datos")
+    .upsert({
+      clave: k,
+      datos: d
+    });
+
+  if(error){
+    console.error("Error al guardar en Supabase:",error);
+  }else{
+    console.log("Guardado en la nube:",k);
+  }
+ }
 function dia(f){return new Date(f+"T00:00:00").getDay()}
 function permiteGastos(f){let d=dia(f);return d>=1&&d<=6}
 
