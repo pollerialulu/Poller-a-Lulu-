@@ -6,6 +6,15 @@
 <meta name="theme-color" content="#171717">
 <title>Pollería Lulú | Ingresos y Egresos</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ <script>
+const SUPABASE_URL = "https://tgikmdhgzyqpmmrjjvfs.supabase.co";
+const SUPABASE_KEY = "sb_publishable_66kSUHhN...";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+ </script>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#050505;font-family:Arial,sans-serif;color:#fff}
 header{background:linear-gradient(135deg,#111,#292929);color:#fff;padding:16px 14px;text-align:center;position:sticky;top:0;z-index:20;box-shadow:0 3px 12px #0004}
