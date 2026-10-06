@@ -216,6 +216,7 @@ function guardar(k,d){
   localStorage.setItem(k,JSON.stringify(d));
   guardarNube(k,d);
 }
+ 
  async function guardarNube(k,d){
   const { error } = await supabaseClient
     .from("polleria_lulu_datos")
